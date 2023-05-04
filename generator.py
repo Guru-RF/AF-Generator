@@ -49,8 +49,10 @@ class Generator:
 
     def make_sine(self):
         l = len(self.sample)
+	tone_volume = 1 # 0.1
         for i in range(l):
-            self.sample[i] = min(2 ** 15 - 1, int(math.sin(math.pi * 2 * i / l) * (2 ** 15)))
+            #self.sample[i] = min(2 ** 15 - 1, int(math.sin(math.pi * 2 * i / l) * (2 ** 15)))
+	    self.sample[i] = int((1 + math.sin(math.pi * 2 * i / l)) * tone_volume * (2 ** 15 - 1))
 
 
     def make_square(self):
