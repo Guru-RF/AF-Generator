@@ -49,10 +49,10 @@ class Generator:
 
     def make_sine(self):
         l = len(self.sample)
-	tone_volume = 1 # 0.1
+	tone_volume = 0.4 # 0.1
         for i in range(l):
-            #self.sample[i] = min(2 ** 15 - 1, int(math.sin(math.pi * 2 * i / l) * (2 ** 15)))
-	    self.sample[i] = int((1 + math.sin(math.pi * 2 * i / l)) * tone_volume * (2 ** 15 - 1))
+            self.sample[i] = min(2 ** 15 - 1, int(math.sin(math.pi * 2 * i / l) * (2 ** 15)))
+	    #self.sample[i] = int((1 + math.sin(math.pi * 2 * i / l)) * tone_volume * (2 ** 15 - 1))
 
 
     def make_square(self):
@@ -103,4 +103,4 @@ class Generator:
             self.make_sawtooth()
 
         self.dac.stop()
-        self.dac.play(audiocore.RawSample(self.sample, channel_count=1, sample_rate=64000), loop=True)
+        self.dac.play(audiocore.RawSample(self.sample, channel_count=2, sample_rate=64000), loop=True)

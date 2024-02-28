@@ -85,8 +85,8 @@ def run():
         if encoder_button.fell:
             shape = change_shape(shape)
 
-        print(str(shape))
-        print(str(frequency))
+        #print(str(shape))
+        #print(str(frequency))
         #display.update_shape(shape)
         #display.update_frequency(frequency)
         generator.update(shape, frequency)
